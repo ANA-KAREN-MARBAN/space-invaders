@@ -1,0 +1,46 @@
+@startuml space
+
+class Alien
+class Pulpo
+class Calamar
+class Cangrejo
+class Cañon{
+    + MoverDerecha()
+    + MoverIzquierda()
+    + Disparar()
+}
+class Barrera
+class Proyectil
+class Vida
+class Juego
+class Puntuacion
+class Nivel
+class Jugador
+class Colisionable
+
+Juego "1" *-- "*" Nivel
+Nivel "1" *-- "*" Alien
+Nivel "1" *-- "4" Barrera
+Nivel "1" *-- "1" Cañon
+
+Jugador "1" o-- "1" Cañon
+Jugador "1" *-- "3" Vida
+Jugador "1" *-- "1" Puntuacion
+
+Cañon "1" o-- "*" Proyectil
+
+Juego "1" *-- "1" Jugador
+
+Proyectil o-- Colisionable
+
+Barrera --|> Colisionable
+Alien --|> Colisionable
+
+Pulpo --|> Alien
+Calamar --|> Alien
+Cangrejo --|> Alien
+
+Alien *-- Puntuacion
+
+
+@enduml
